@@ -1,0 +1,304 @@
+name: Spotify Demo
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  Check-the-Issue:
+    runs-on: ubuntu-latest
+    needs: Get-Random-Gif
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v1
+      
+      - name: Get fail gif
+        uses: actions/download-artifact@v1
+        with:
+          name: fail
+
+      - name: Get bye gif
+        uses: actions/download-artifact@v1
+        with:
+          name: bye
+
+      - name: Set env variable for fail gif
+        run: |
+          fail_gif=$(cat fail/fail_gif)
+          bye_gif=$(cat bye/bye_gif)
+
+          echo "GITHUB_BYE_GIF"=$bye_gif >> $GITHUB_ENV
+          echo "GITHUB_FAIL_GIF"=$fail_gif >> $GITHUB_ENV
+
+      - name: Check fail
+        if: ${{ github.event.issue.title != 'song request' }}
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Warning ⚠ To add your favorite song to developer's playlist; title should be: 'song request' <p align='center'><img src='${{ env.GITHUB_FAIL_GIF }}'/></p>"
+            })
+
+      - name: Close the issue fail
+        if: ${{ github.event.issue.title != 'song request' }}
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: We are closing that issue because title not seems right... <p align='center'><img src="${{ env.GITHUB_BYE_GIF }}"/></p>
+
+      
+      - name: Exit if fail
+        if: ${{ github.event.issue.title != 'song request' }}
+        run: exit 1
+        
+  Get-Song-Artist:
+    needs: Check-the-Issue
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Get song and artist
+        run: |
+          if [ "${{ github.event.issue.title }}" = "song request" ]; then echo "${{ github.event.issue.body }}" >> favorite_song; else echo "fail"; fi
+          artist_name=$(cat favorite_song | awk -F "-" '{print $1}')
+          song_name=$(cat favorite_song | awk -F "-" '{print $2}')
+
+          artist_name_escaped=${artist_name//[^a-zA-Z0-9ğüşçöı ]/ }
+          song_name_escaped=${song_name//[^a-zA-Z0-9ğüşçöı ]/ }
+
+          echo $artist_name_escaped >> artist_name
+          echo $song_name_escaped >> song_name
+
+      - name: Share song name
+        uses: actions/upload-artifact@v1
+        with:
+          name: song
+          path: song_name
+
+      - name: Share artist name
+        uses: actions/upload-artifact@v1
+        with:
+          name: artist
+          path: artist_name
+
+  Add-Song:
+    needs: Get-Song-Artist
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the Spotify API code
+        run: |
+          git clone https://github.com/oz9un/Spotify-API-Apps.git
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+
+      - name: Setup pip3 and necessary modules
+        run: |
+          sudo apt install python3-pip;
+          python3 -m pip install requests argparse
+
+      - name: Get song name
+        uses: actions/download-artifact@v1
+        with:
+          name: song
+      
+      - name: Get artist name
+        uses: actions/download-artifact@v1
+        with:
+          name: artist
+
+      - name: Get apology gif
+        uses: actions/download-artifact@v1
+        with:
+          name: apology
+
+      - name: Get success gif
+        uses: actions/download-artifact@v1
+        with:
+          name: success
+
+      - name: Get bye gif
+        uses: actions/download-artifact@v1
+        with:
+          name: bye
+
+      - name: Set env variable for song and artist
+        run: |
+          get_song=$(cat song/song_name)
+          get_artist=$(cat artist/artist_name)
+          apology_gif=$(cat apology/apology_gif)
+          success_gif=$(cat success/success_gif)
+          bye_gif=$(cat bye/bye_gif)
+
+          echo "GITHUB_BYE_GIF"=$bye_gif >> $GITHUB_ENV
+          echo "GITHUB_SUCCESS_GIF"=$success_gif >> $GITHUB_ENV
+          echo "GITHUB_APOLOGY_GIF"=$apology_gif >> $GITHUB_ENV
+          echo "GITHUB_SONG_NAME"=$get_song >> $GITHUB_ENV
+          echo "GITHUB_ARTIST_NAME"=$get_artist >> $GITHUB_ENV
+
+      - name: Add your favorite song
+        run: |
+          cd Spotify-API-Apps;
+          if [ -f "failed_operation" ]; then rm failed_operation; fi
+          python3 addSong_main.py -id ${{ secrets.SPOTIFY_CLIENT_ID }} -secret ${{ secrets.SPOTIFY_CLIENT_SECRET }} -token ${{ secrets.SPOTIFY_REFRESH_TOKEN }} -s "${GITHUB_SONG_NAME}" -a "${GITHUB_ARTIST_NAME}" -p  ${{ secrets.SPOTIFY_PLAYLIST_ID }}
+
+      - name: Check fail 1
+        run: |
+          if [ -f "Spotify-API-Apps/failed_operation" ]; then echo "GITHUB_FAIL_CHECK"="True" >> $GITHUB_ENV; else echo "GITHUB_FAIL_CHECK"="False" >> $GITHUB_ENV; fi
+          
+      - name: Check fail 2
+        if: env.GITHUB_FAIL_CHECK == 'False'
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Hey👋 You successfully added your favorite song to [devs playlist](https://open.spotify.com/playlist/5iI16F6SXezeIcxFFTsXWb)! <p align='center'><img src='${{ env.GITHUB_SUCCESS_GIF }}'/></p>"
+            })
+      
+      - name: Check fail 3
+        if: env.GITHUB_FAIL_CHECK == 'True'
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Apologizes...😪 We cannot find that song. Can you try again with another song? <p align='center'><img src='${{ env.GITHUB_APOLOGY_GIF }}'/></p>"
+            })
+      
+      - name: Close the issue fail
+        if: env.GITHUB_FAIL_CHECK == 'True'
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: We are closing that issue because we couldn't find your favorite song and feel sorry... <p align='center'><img src="${{ env.GITHUB_BYE_GIF }}"/></p>
+
+      - name: Exit if fail check
+        if: env.GITHUB_FAIL_CHECK == 'True'
+        run: exit 1
+
+  Edit-Contributors:
+    needs: Add-Song
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Get song name
+        uses: actions/download-artifact@v1
+        with:
+          name: song
+      
+      - name: Get artist name
+        uses: actions/download-artifact@v1
+        with:
+          name: artist
+
+      - name: Set env variable for song-artist
+        run: |
+          get_song=$(cat song/song_name)
+          get_artist=$(cat artist/artist_name)
+
+          echo "GITHUB_SONG_NAME"=$get_song >> $GITHUB_ENV
+          echo "GITHUB_ARTIST_NAME"=$get_artist >> $GITHUB_ENV
+
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Edit the contributions
+        run: |
+          echo -e "\t- 💿 *${GITHUB_ARTIST_NAME}* - *${GITHUB_SONG_NAME}* 📀" >> contributors/${{ github.event.issue.user.login }}
+
+      - name: Edit the README
+        run: |
+          if [ -f "temp" ]; then rm temp; fi
+          for i in contributors/*; do echo -e "\n- **${i##*/}** 🧠\n$(cat $i)" >> temp; done
+          
+          cat README_template temp > README.md
+          if [ -f "temp" ]; then rm temp; fi
+
+      - name: Update version
+        id: version_updater
+        run: |
+          git status
+          git fetch origin master
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m 'Readme updated'
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+  
+  Get-Random-Gif:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Random gif getter
+        run: |
+          SUCCESS_GIF=("https://media1.giphy.com/media/blSTtZehjAZ8I/giphy.gif?cid=ecf05e47e6rft0mrkjolfa8rc6omfrv21ue0hph8i62b6y24&rid=giphy.gif&ct=g" "https://media3.giphy.com/media/DhstvI3zZ598Nb1rFf/giphy.gif?cid=ecf05e47e6rft0mrkjolfa8rc6omfrv21ue0hph8i62b6y24&rid=giphy.gif&ct=g" "https://media0.giphy.com/media/6fScAIQR0P0xW/giphy.gif?cid=ecf05e470m9xtb5wvrhhxsu33xvaraadu3h4z9f2pkyxaimb&rid=giphy.gif&ct=g" "https://media3.giphy.com/media/owiooI9tn2hjy/giphy.gif?cid=ecf05e47g3w2zd4g4i2ggvw0wm0q6z90biox6x3msc25cfjq&rid=giphy.gif&ct=g" "https://media0.giphy.com/media/g7GKcSzwQfugw/giphy.gif?cid=ecf05e47c9mgivqaitnxwwpteruoedmj2tmofxzrafqjxmlp&rid=giphy.gif&ct=g" "https://media4.giphy.com/media/wAxlCmeX1ri1y/giphy.gif?cid=ecf05e47t5i8d4yoyg1idbmgtfoxbppuih00lqvcj9kqba1r&rid=giphy.gif&ct=g")
+          FAIL_GIF=("https://media3.giphy.com/media/26ybwvTX4DTkwst6U/giphy.gif?cid=ecf05e47ght0rgcxahizr5xi6ed240d330q3nf23xvq0donb&rid=giphy.gif&ct=g" "https://media3.giphy.com/media/y9gcCOXpNX8UfZrp0X/giphy.gif?cid=ecf05e47ght0rgcxahizr5xi6ed240d330q3nf23xvq0donb&rid=giphy.gif&ct=g" "https://media0.giphy.com/media/D7knpKzFbgDPBmdrVM/giphy.gif?cid=ecf05e47jbi0n4vjryh2w1pktjyo6j0yo0mct6khsohha6kv&rid=giphy.gif&ct=g" "https://media3.giphy.com/media/98maV70oAqIZtEYqB4/giphy.gif?cid=ecf05e476dvchmufocxrwzv0efus0s37fe9gkui8lgtlgukb&rid=giphy.gif&ct=g")
+          APOLOGY_GIF=("https://media4.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif?cid=ecf05e47y8wftnui8tbqdypahxq665ojrquudsenbyb16z5t&rid=giphy.gif&ct=g" "https://media3.giphy.com/media/jkr6MWbZk5gE88QQX3/giphy.gif?cid=ecf05e4781kcail4mx81iltpx5v13wkpwgogs51prxu53ln9&rid=giphy.gif&ct=g" "https://media0.giphy.com/media/3ohA2ZD9EkeK2AyfdK/giphy.gif?cid=ecf05e47sa6fs8pd5gpnkj4hb5ba3ytcc8afz5gvx4jrnei6&rid=giphy.gif&ct=g" "https://media2.giphy.com/media/MWK7YH077pb8OE9BoT/giphy.gif?cid=ecf05e47sa6fs8pd5gpnkj4hb5ba3ytcc8afz5gvx4jrnei6&rid=giphy.gif&ct=g" "https://media4.giphy.com/media/9RWeDFAf07oxT1hgLB/giphy.gif?cid=ecf05e47hbjsdjzr82w1r2q4m1ytrrvfqxvoep9ph6ycaaol&rid=giphy.gif&ct=g")
+          BYE_GIF=("https://media1.giphy.com/media/mP8GermRyOFWV8PQeq/giphy.gif?cid=ecf05e47xv56s5x1d6r8ec8g5h9x11r6m12c6j3nxisrnp8p&rid=giphy.gif&ct=g" "https://media1.giphy.com/media/jUwpNzg9IcyrK/giphy.gif?cid=ecf05e47xv56s5x1d6r8ec8g5h9x11r6m12c6j3nxisrnp8p&rid=giphy.gif&ct=g" "https://media0.giphy.com/media/KRxcgvd5fLiWk/giphy.gif?cid=ecf05e47xv56s5x1d6r8ec8g5h9x11r6m12c6j3nxisrnp8p&rid=giphy.gif&ct=g" "https://media4.giphy.com/media/m9eG1qVjvN56H0MXt8/giphy.gif?cid=ecf05e47xv56s5x1d6r8ec8g5h9x11r6m12c6j3nxisrnp8p&rid=giphy.gif&ct=g" "https://media4.giphy.com/media/kaBU6pgv0OsPHz2yxy/giphy.gif?cid=ecf05e47xv56s5x1d6r8ec8g5h9x11r6m12c6j3nxisrnp8p&rid=giphy.gif&ct=g")
+
+
+          SELECTED_SUCCESS=${SUCCESS_GIF[$RANDOM % ${#SUCCESS_GIF[@]}]};
+          SELECTED_FAIL=${FAIL_GIF[$RANDOM % ${#FAIL_GIF[@]}]};
+          SELECTED_APOLOGY=${APOLOGY_GIF[$RANDOM % ${#APOLOGY_GIF[@]}]};
+          SELECTED_BYE=${BYE_GIF[$RANDOM % ${#BYE_GIF[@]}]};
+
+          echo "$SELECTED_SUCCESS" >> success_gif
+          echo "$SELECTED_FAIL" >> fail_gif
+          echo "$SELECTED_APOLOGY" >> apology_gif
+          echo "$SELECTED_BYE" >> bye_gif
+      
+      - name: Share random success gif
+        uses: actions/upload-artifact@v1
+        with:
+          name: success
+          path: success_gif
+
+      - name: Share random fail gif
+        uses: actions/upload-artifact@v1
+        with:
+          name: fail
+          path: fail_gif
+
+      - name: Share random apology gif
+        uses: actions/upload-artifact@v1
+        with:
+          name: apology
+          path: apology_gif
+
+      - name: Share random bye gif
+        uses: actions/upload-artifact@v1
+        with:
+          name: bye
+          path: bye_gif
+
+
+  Close-the-Issue:
+    needs: Add-Song
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Get bye gif
+        uses: actions/download-artifact@v1
+        with:
+          name: bye
+
+      - name: Set env variable for bye gif
+        run: |
+          bye_gif=$(cat bye/bye_gif)
+
+          echo "GITHUB_BYE_GIF"=$bye_gif >> $GITHUB_ENV
+
+      - name: Close the issue
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: Thanks for using Devs' Playlist! We are now closing this issue; but you are always more than welcome 💙 <p align='center'><img src="${{ env.GITHUB_BYE_GIF }}"/></p> 
