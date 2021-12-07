@@ -27,5 +27,8 @@ I hope it becomes a project that everyone will like and share their favorite son
   
 ## Contributors🧠:
 
+- **boraserel** 🧠
+	- 💿 *billie eilish* - *no time to die* 📀
+
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
