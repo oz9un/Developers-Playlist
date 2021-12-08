@@ -29,6 +29,9 @@ I hope it becomes a project that everyone will like and share their favorite son
   
 ## Contributors🧠:
 
+- **7ua** 🧠
+	- 💿 *Grant Macdonald* - *Ram Ranch* 📀
+
 - **BengisuEkizoglu** 🧠
 	- 💿 *doja cat* - *rules* 📀
 
