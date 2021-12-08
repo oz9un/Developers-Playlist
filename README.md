@@ -40,6 +40,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
+	- 💿 *g* - *eazy* 📀
 
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
