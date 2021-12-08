@@ -29,6 +29,9 @@ I hope it becomes a project that everyone will like and share their favorite son
   
 ## Contributors🧠:
 
+- **White-Hare** 🧠
+	- 💿 *barış manço* - *dönence* 📀
+
 - **aliorhun** 🧠
 	- 💿 *Hakan Altun* - *Bana Göresin* 📀
 
