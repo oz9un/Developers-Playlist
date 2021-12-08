@@ -44,6 +44,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **boraserel** 🧠
 	- 💿 *billie eilish* - *no time to die* 📀
 
+- **brnskn** 🧠
+	- 💿 *Persian Empire* - *TO NA BI* 📀
+
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
 	- 💿 *g* - *eazy* 📀
