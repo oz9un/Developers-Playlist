@@ -2,6 +2,8 @@
 A drop of musical taste from every contributor... Welcome to the **developers' collaborative playlist**. 
 <p align="center"><img src="https://i.scdn.co/image/ab67706c0000bebb96a114f10dd59e0d961cfc08"/></p>
 
+**<p align="center">Playlist link: [Developers' Collaborative Playlist](https://open.spotify.com/playlist/5iI16F6SXezeIcxFFTsXWb) </p>**
+
 ## Description🤖:
 The same algorithm can be written differently by each developer. The developer's code style becomes their signature. 
 
@@ -26,6 +28,9 @@ I love the power of **Github Actions**. [2021 Github Actions Hackathon](https://
 I hope it becomes a project that everyone will like and share their favorite songs with other developers <img width="30" src="https://media.tenor.com/images/e79b3b95fd5663e36ce7499a54cdfeab/tenor.gif"/>
   
 ## Contributors🧠:
+
+- **amrikasir** 🧠
+	- 💿 *ariel noah* - *moshimo mata itsuka* 📀
 
 - **boraserel** 🧠
 	- 💿 *billie eilish* - *no time to die* 📀
