@@ -15,7 +15,7 @@ The **Developer's Playlist** analyzes opened issues on this repository using **G
 
 ## Usage📖:
 - Open an issue with title **'song request'** (⚠ 'Song request' and 'Song Request' also works right now.⚠)
-- Write your favorite track to issue's body in format: <artist>-<song>.
+- Write your favorite track to issue's body in format: "artist-song". (⚠ If there is a dash "-" in the artist or song title, please use space instead for now. ⚠)
   <img src="https://user-images.githubusercontent.com/57866851/145097376-2737eee3-f539-4f58-a036-9b9a0bba9dc1.png"/>
 - Wait for the Github Action Bot's response.
   <img height="400" src="https://user-images.githubusercontent.com/57866851/145097734-a87a6ff0-b4bb-4da0-b94c-5d761f09b797.png"/>
@@ -60,6 +60,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
 	- 💿 *daft punk* - *instant crush* 📀
+	- 💿 *G* - *eazy* 📀
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
