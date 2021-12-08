@@ -60,7 +60,7 @@ jobs:
     steps:
       - name: Get song and artist
         run: |
-          if [ "${{ github.event.issue.title }}" = "song request" ]; then echo "${{ github.event.issue.body }}" >> favorite_song; else echo "fail"; fi
+          if [[ "${{ github.event.issue.title }}" = "song request" || "${{ github.event.issue.title }}" = "Song request" || "${{ github.event.issue.title }}" = "Song Request"]]; then echo "${{ github.event.issue.body }}" >> favorite_song; else echo "fail"; fi
           artist_name=$(cat favorite_song | awk -F "-" '{print $1}')
           song_name=$(cat favorite_song | awk -F "-" '{print $2}')
 
