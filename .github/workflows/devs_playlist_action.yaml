@@ -53,6 +53,57 @@ jobs:
       - name: Exit if fail
         if: ${{ github.event.issue.title != 'song request' }}
         run: exit 1
+
+  Check-the-Title:
+    runs-on: ubuntu-latest
+    needs: Get-Random-Gif
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v1
+      
+      - name: Get fail gif
+        uses: actions/download-artifact@v1
+        with:
+          name: fail
+
+      - name: Get bye gif
+        uses: actions/download-artifact@v1
+        with:
+          name: bye
+
+      - name: Set env variable for fail gif
+        run: |
+          fail_gif=$(cat fail/fail_gif)
+          bye_gif=$(cat bye/bye_gif)
+          dash_occurence=$(echo "${{ github.event.issue.body }}" | awk -F "-" '{print NF-1}')  
+          
+          echo "GITHUB_DASH_OCCURENCE"=$dash_occurence >> $GITHUB_ENV
+          echo "GITHUB_BYE_GIF"=$bye_gif >> $GITHUB_ENV
+          echo "GITHUB_FAIL_GIF"=$fail_gif >> $GITHUB_ENV
+
+      - name: Check fail
+        if: ${{ env.GITHUB_DASH_OCCURENCE != 1 }}
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Warning ⚠ To add your favorite song to developer's playlist; body of your issue must contain exactly one dash ('-'). <p align='center'><img src='${{ env.GITHUB_FAIL_GIF }}'/></p>"
+            })
+
+      - name: Close the issue fail
+        if: ${{ env.GITHUB_DASH_OCCURENCE != 1 }}
+        uses: peter-evans/close-issue@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: We are closing that issue because your search term not seems right... <p align='center'><img src="${{ env.GITHUB_BYE_GIF }}"/></p>
+
+      - name: Exit if fail
+        if: ${{ env.GITHUB_DASH_OCCURENCE != 1 }}
+        run: exit 1
         
   Get-Song-Artist:
     needs: Check-the-Issue
