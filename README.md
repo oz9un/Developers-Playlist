@@ -32,6 +32,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **BengisuEkizoglu** 🧠
 	- 💿 *doja cat* - *rules* 📀
 
+- **MineGoksen** 🧠
+	- 💿 *Teoman* - *Resimdeki Gözyaşları* 📀
+
 - **White-Hare** 🧠
 	- 💿 *barış manço* - *dönence* 📀
 
