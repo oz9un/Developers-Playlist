@@ -45,6 +45,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 	- 💿 *motive* - *ömrüm* 📀
 	- 💿 *g* - *eazy* 📀
 
+- **duyguolmez** 🧠
+	- 💿 *howard shore* - *the uruk hai* 📀
+
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
 
