@@ -54,7 +54,7 @@ jobs:
         if: ${{ github.event.issue.title != 'song request' }}
         run: exit 1
 
-  Check-the-Title:
+  Check-the-Body:
     runs-on: ubuntu-latest
     needs: Get-Random-Gif
 
@@ -106,7 +106,7 @@ jobs:
         run: exit 1
         
   Get-Song-Artist:
-    needs: Check-the-Issue
+    needs: [Check-the-Issue, Check-the-Body]
     runs-on: ubuntu-latest 
     steps:
       - name: Get song and artist
