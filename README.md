@@ -14,7 +14,7 @@ The same algorithm can be written differently by each developer. The developer's
 The **Developer's Playlist** analyzes opened issues on this repository using **GitHub Actions** and collects developers' favorite songs into a collaborative playlist. 
 
 ## Usage📖:
-- Open an issue with title **'song request'**
+- Open an issue with title **'song request'** (⚠ Please be careful about the lowercase 's' ⚠)
 - Write your favorite track to issue's body in format: <artist>-<song>.
   <img src="https://user-images.githubusercontent.com/57866851/145097376-2737eee3-f539-4f58-a036-9b9a0bba9dc1.png"/>
 - Wait for the Github Action Bot's response.
