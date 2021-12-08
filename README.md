@@ -57,3 +57,6 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
+
+- **utkudarilmaz** 🧠
+	- 💿 *Jay* - *Jay Johanson* 📀
