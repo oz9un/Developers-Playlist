@@ -47,3 +47,6 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
+
+- **susalihh** 🧠
+	- 💿 *daft punk* - *get lucky* 📀
