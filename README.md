@@ -52,18 +52,16 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
-	- 💿 *g* - *eazy* 📀
 
 - **duyguolmez** 🧠
 	- 💿 *howard shore* - *the uruk hai* 📀
 
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
-	- 💿 *daft punk* - *instant crush* 📀
-	- 💿 *G* - *eazy* 📀
+	- 💿 *daft punk* - *instant crush* 📀	- 💿 *Gotye* - *Somebody That* 📀
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
 
 - **utkudarilmaz** 🧠
-	- 💿 *Jay* - *Jay Johanson* 📀
+
