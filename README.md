@@ -14,7 +14,7 @@ The same algorithm can be written differently by each developer. The developer's
 The **Developer's Playlist** analyzes opened issues on this repository using **GitHub Actions** and collects developers' favorite songs into a collaborative playlist. 
 
 ## Usage📖:
-- Open an issue with title **'song request'** (⚠ Please be careful about the lowercase 's' ⚠)
+- Open an issue with title **'song request'** (⚠ 'Song request' and 'Song Request' also works right now.⚠)
 - Write your favorite track to issue's body in format: <artist>-<song>.
   <img src="https://user-images.githubusercontent.com/57866851/145097376-2737eee3-f539-4f58-a036-9b9a0bba9dc1.png"/>
 - Wait for the Github Action Bot's response.
@@ -32,6 +32,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **BengisuEkizoglu** 🧠
 	- 💿 *doja cat* - *rules* 📀
 
+- **MineGoksen** 🧠
+	- 💿 *Teoman* - *Resimdeki Gözyaşları* 📀
+
 - **White-Hare** 🧠
 	- 💿 *barış manço* - *dönence* 📀
 
@@ -44,6 +47,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **boraserel** 🧠
 	- 💿 *billie eilish* - *no time to die* 📀
 
+- **brnskn** 🧠
+	- 💿 *Persian Empire* - *TO NA BI* 📀
+
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
 	- 💿 *g* - *eazy* 📀
@@ -53,6 +59,10 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **oz9un** 🧠
 	- 💿 *deadmadu5* - *strobe* 📀
+	- 💿 *daft punk* - *instant crush* 📀
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
+
+- **utkudarilmaz** 🧠
+	- 💿 *Jay* - *Jay Johanson* 📀
