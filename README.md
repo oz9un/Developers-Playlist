@@ -31,7 +31,6 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **7ua** 🧠
 	- 💿 *Grant Macdonald* - *Ram Ranch* 📀
-	- 💿 *Grant Macdonald* - *Ram Ranch* 📀
 
 - **BengisuEkizoglu** 🧠
 	- 💿 *doja cat* - *rules* 📀
@@ -56,7 +55,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
-	
+		- 💿 *desiigner* - *panda* 📀
 
 - **duyguolmez** 🧠
 	- 💿 *howard shore* - *the uruk hai* 📀
@@ -72,9 +71,6 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
-
-- **utkudarilmaz** 🧠
-
 
 - **zekiahmetbayar** 🧠
 	- 💿 *nejat alp* - *arkadaşım* 📀
