@@ -43,6 +43,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **aliorhun** 🧠
 	- 💿 *Hakan Altun* - *Bana Göresin* 📀
+	- 💿 *samet burak ay* - *keyfimiz ellere dert oldu* 📀
 
 - **amrikasir** 🧠
 	- 💿 *ariel noah* - *moshimo mata itsuka* 📀
@@ -55,7 +56,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
-		- 💿 *desiigner* - *panda* 📀
+	- 💿 *desiigner* - *panda* 📀
 
 - **duyguolmez** 🧠
 	- 💿 *howard shore* - *the uruk hai* 📀
