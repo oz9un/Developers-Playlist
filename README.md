@@ -69,6 +69,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 	- 💿 *deadmadu5* - *strobe* 📀
 	- 💿 *daft punk* - *instant crush* 📀	
 	- 💿 *Gotye* - *Somebody That* 📀
+	- 💿 *The Weeknd* - *After Hours* 📀
 
 - **susalihh** 🧠
 	- 💿 *daft punk* - *get lucky* 📀
