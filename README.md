@@ -44,6 +44,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **aliorhun** 🧠
 	- 💿 *Hakan Altun* - *Bana Göresin* 📀
 	- 💿 *samet burak ay* - *keyfimiz ellere dert oldu* 📀
+	- 💿 *Lily Allen* - *Friday Night* 📀
 
 - **amrikasir** 🧠
 	- 💿 *ariel noah* - *moshimo mata itsuka* 📀
