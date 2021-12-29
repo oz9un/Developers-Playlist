@@ -74,6 +74,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 	- 💿 *The Weeknd* - *After Hours* 📀
 	- 💿 *justin timberlake* - *tko* 📀
 	- 💿 *The Neighbourhood* - *Sweater Weather* 📀
+	- 💿 *Ellise* - *911* 📀
 
 - **phyex0** 🧠
 	- 💿 *Möterhead* - *Overkill* 📀
