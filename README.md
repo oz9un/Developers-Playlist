@@ -75,6 +75,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 	- 💿 *justin timberlake* - *tko* 📀
 	- 💿 *The Neighbourhood* - *Sweater Weather* 📀
 	- 💿 *Ellise* - *911* 📀
+	- 💿 *Wham* - *Last Christmas* 📀
 
 - **phyex0** 🧠
 	- 💿 *Möterhead* - *Overkill* 📀
