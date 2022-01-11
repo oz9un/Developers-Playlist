@@ -40,6 +40,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **TheNavyInfantry** 🧠
 	- 💿 *Wye Oak* - *Civilian* 📀
+	- 💿 *Audiomachine* - *Wars Of Faith* 📀
 
 - **White-Hare** 🧠
 	- 💿 *barış manço* - *dönence* 📀
