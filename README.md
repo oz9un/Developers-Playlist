@@ -50,6 +50,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 	- 💿 *samet burak ay* - *keyfimiz ellere dert oldu* 📀
 	- 💿 *Lily Allen* - *Friday Night* 📀
 	- 💿 *US Girls* - *And Yet It Moves* 📀
+	- 💿 *Fato* - *Giden Gittiği Yeri Mutlu Etsin* 📀
 
 - **amrikasir** 🧠
 	- 💿 *ariel noah* - *moshimo mata itsuka* 📀
