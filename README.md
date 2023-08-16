@@ -61,6 +61,9 @@ I hope it becomes a project that everyone will like and share their favorite son
 - **brnskn** 🧠
 	- 💿 *Persian Empire* - *TO NA BI* 📀
 
+- **calsbrook** 🧠
+	- 💿 *Kendrick Lamar* - *King Kunta* 📀
+
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
 	- 💿 *desiigner* - *panda* 📀
