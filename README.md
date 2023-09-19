@@ -63,6 +63,7 @@ I hope it becomes a project that everyone will like and share their favorite son
 
 - **calsbrook** 🧠
 	- 💿 *Kendrick Lamar* - *King Kunta* 📀
+	- 💿 *Post Malone* - *Chemical* 📀
 
 - **dogukanoksuz** 🧠
 	- 💿 *motive* - *ömrüm* 📀
